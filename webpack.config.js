@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: './src/index.jsx',
   devtool: 'inline-source-map',
   // plugins: [
   //     new HtmlWebpackPlugin({
@@ -24,7 +24,7 @@ module.exports = {
         test: /\.(m?js|jsx)$/,
         // allow import foo from 'foo' instead of 'foo.js'
         resolve: {
-          fullySpecified: false
+          fullySpecified: false,
         },
         exclude: /node_modules/,
         use: ['babel-loader'],
