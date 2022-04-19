@@ -1,0 +1,15 @@
+@import url('./norm.css');
+
+:root {
+  --react-gray: #282c34;
+  --react-blue: #61dafb;
+  --react-white: white;
+}
+
+.root {
+  min-height: 100vh;
+  background-color: var(--react-blue);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}

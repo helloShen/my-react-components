@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.jsx',
+  entry: './src/js/index.jsx',
   devtool: 'inline-source-map',
   // plugins: [
   //     new HtmlWebpackPlugin({
