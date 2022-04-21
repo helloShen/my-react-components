@@ -93,19 +93,19 @@ class TextField extends React.Component {
     } = this.state;
     const id = `textfield-${this.id}`;
     let helperMessage = helper;
-    let outerLabelNames = 'smui-textfield';
-    if (activated) outerLabelNames += ' smui-activated';
-    if (focused) outerLabelNames += ' smui-focused';
-    if (hover) outerLabelNames += ' smui-hover';
-    if (disabled) outerLabelNames += ' smui-diabled';
+    let classNames = 'smui-textfield';
+    if (activated) classNames += ' smui-activated';
+    if (focused) classNames += ' smui-focused';
+    if (hover) classNames += ' smui-hover';
+    if (disabled) classNames += ' smui-diabled';
     if (error) {
-      outerLabelNames += ' smui-error';
+      classNames += ' smui-error';
       helperMessage = this.error;
     }
     const style = Object.assign({}, (primary && { '--primary': primary }));
     return (
       <label
-        className={outerLabelNames}
+        className={classNames}
         style={style}
         onMouseDown={this.handleFocus}
         onFocus={this.handleFocus}
