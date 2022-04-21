@@ -1,3 +1,4 @@
+/* eslint-disable prefer-object-spread */
 /* eslint-disable react/prop-types */
 import './button.css';
 import React from 'react';
@@ -59,7 +60,11 @@ class Button extends React.Component {
       focused,
       hover,
     } = this.state;
-    const style = { '--primary': primary, '--surface': surface };
+    const style = Object.assign(
+      {},
+      (primary && { '--primary': primary }),
+      (surface && { '--surface': surface }),
+    );
     let classNames = 'smui-btn';
     if (variant) {
       switch (variant) {
