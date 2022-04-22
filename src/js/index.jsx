@@ -1,22 +1,32 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import Footer from '../footer/footer';
-import Button from '../button/button';
+import FooterExample from '../footer/example';
+import ButtonExample from '../button/example';
+import TextFieldExample from '../textfield/example';
+import CardExample from '../card/example';
 
 const root = ReactDOM.createRoot(
   document.querySelector('.root'),
 );
-const muiPrimary = '#1976d2';
-const materialPrimary = '#6200cc';
-root.render(
-  <Button
-    // primary={muiPrimary}
-    primary={materialPrimary}
-    surface="#ffffff"
-    variant="contained"
-    size="medium"
-  >
-    Hello
-  </Button>,
-);
+
+function testFooter() {
+  root.render(<FooterExample />);
+}
+
+function testButton() {
+  root.render(<ButtonExample />);
+}
+
+function testTextField() {
+  root.render(<TextFieldExample />);
+}
+
+function testCard() {
+  root.render(<CardExample />);
+}
+
+// testFooter();
+// testButton();
+// testTextField();
+testCard();

@@ -6,7 +6,7 @@ import BlackGithubImg from './github_black.png';
 import WhiteGithubImg from './github_white.png';
 
 // eslint-disable-next-line react/prop-types
-function Footer({ githubLogo, sourceCode }) {
+export default function Footer({ githubLogo, sourceCode }) {
   const year = new Date().getFullYear();
   const logo = (githubLogo === 'black') ? BlackGithubImg : WhiteGithubImg;
   // customize style on ".footer.footer-custom"
@@ -28,18 +28,5 @@ function Footer({ githubLogo, sourceCode }) {
         {year}
       </div>
     </div>
-  );
-}
-
-/**
- * sourceCode: edit link
- * githubLogo: "black" or "white"
- */
-export default function FooterFactory() {
-  return (
-    <Footer
-      sourceCode="https://github.com/helloShen/#"
-      githubLogo="black"
-    />
   );
 }
