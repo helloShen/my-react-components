@@ -16,7 +16,9 @@ class TextField extends React.Component {
   constructor(props) {
     super(props);
     this.id = TextField.generateId();
-    this.error = 'error';
+    if (props.pattern) {
+      this.pattern = new RegExp(props.pattern, 'g');
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
@@ -48,8 +50,10 @@ class TextField extends React.Component {
 
   handleBlur(e) {
     if (e.target.value.length > 0) {
+      const content = e.target.value;
       this.setState({
         focused: false,
+        error: !this.isValid(content),
       });
     } else {
       this.setState({
@@ -57,6 +61,10 @@ class TextField extends React.Component {
         focused: false,
       });
     }
+  }
+
+  static handleKeyDown(e) {
+    if (e.key === 'Enter') e.target.blur();
   }
 
   handleMouseEnter() {
@@ -77,6 +85,10 @@ class TextField extends React.Component {
     });
   }
 
+  isValid(content) {
+    return (this.pattern) ? content.match(this.pattern) : true;
+  }
+
   render() {
     const {
       label,
@@ -93,6 +105,7 @@ class TextField extends React.Component {
     } = this.state;
     const id = `textfield-${this.id}`;
     let helperMessage = helper;
+    const errorMessage = `Invalid: ${helper}`;
     let classNames = 'smui-textfield';
     if (activated) classNames += ' smui-activated';
     if (focused) classNames += ' smui-focused';
@@ -100,7 +113,7 @@ class TextField extends React.Component {
     if (disabled) classNames += ' smui-diabled';
     if (error) {
       classNames += ' smui-error';
-      helperMessage = this.error;
+      helperMessage = errorMessage;
     }
     const style = Object.assign({}, (primary && { '--primary': primary }));
     return (
@@ -119,6 +132,7 @@ class TextField extends React.Component {
           value={value}
           className="smui-textfield__input"
           onChange={this.handleChange}
+          onKeyDown={TextField.handleKeyDown}
           type="text"
           id={id}
         />
